@@ -1,3 +1,26 @@
+const roundButton = document.querySelector('.new-round');
+const resetButton = document.querySelector('.new-round.reset');
+const score = document.querySelector('.score');
+
+let totalRounds = 0;
+let currentScore = 0;
+roundButton.addEventListener('click', e => {
+    if(totalRounds === 0) {
+        roundButton.textContent = 'New Round';
+    }
+
+    e.stopPropagation();
+});
+
+resetButton.addEventListener('click', e => {
+    score.textContent = '0';
+    currentScore = 0;
+    roundButton.textContent = 'Start Game';
+    totalRounds = 0;
+
+    e.stopPropagation();
+});
+
 /* getComputerChoice function
  * No parameters
  * Return either 'Rock', 'Paper', or 'Scissors' randomly */
@@ -76,5 +99,3 @@ function game() {
         return `Game Over, it\'s a Tie!\nWins: ${wins}\nLosses: ${losses}\nTies: ${ties}`;
     }
 }
-
-console.log(game());

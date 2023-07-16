@@ -1,0 +1,57 @@
+body {
+    background-color: #121212;
+    color: white;
+}
+
+button {
+    cursor: pointer;
+    color: white;
+    background-color: transparent;
+    border: 2px solid gray;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 32px;
+}
+
+.main-container > .top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+}
+
+.main-container > .top-bar > span {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-container > .top-bar .new-round {
+    margin: 0;
+    padding: 4px 8px;
+    border: 2px solid gray;
+    border-radius: 6px;
+    background-color: transparent;
+    
+}
+
+.main-container > p {
+    align-self: center;
+    margin-bottom: -10px;
+}
+.main-container > .choices-box {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.main-container > .choices-box > .choice {
+    margin: 0;
+    padding: 30px 20px;
+    border-radius: 10px;
+}
