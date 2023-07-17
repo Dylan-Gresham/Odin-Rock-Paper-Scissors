@@ -59,6 +59,10 @@ endButton.addEventListener('click', e => {
     
         instructions.textContent = `${decision} Wins: ${wins} Losses: ${losses} Ties: ${ties}`;
         instructions.style.color = '#FFFFFF';
+
+        wins = 0;
+        losses = 0;
+        ties = 0;
     }
 
     e.stopPropagation();
