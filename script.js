@@ -84,13 +84,16 @@ rock.addEventListener('click', e => {
         instructions.textContent = result;
 
         if(result.charAt(4) === 'L') {
-            score.textContent = +score.textContent - 1;
             losses++;
         } else if(result.charAt(4) === 'W') {
             score.textContent = +score.textContent + 1;
             wins++;
         } else {
             ties++;
+        }
+
+        if(wins === 5 || losses === 5) {
+            endButton.dispatchEvent(new Event('click'));
         }
     }
 
@@ -107,13 +110,16 @@ paper.addEventListener('click', e => {
         instructions.textContent = result;
 
         if(result.charAt(4) === 'L') {
-            score.textContent = +score.textContent - 1;
             losses++;
         } else if(result.charAt(4) === 'W') {
             score.textContent = +score.textContent + 1;
             wins++;
         } else {
             ties++;
+        }
+
+        if(wins === 5 || losses === 5) {
+            endButton.dispatchEvent(new Event('click'));
         }
     }
 
@@ -130,13 +136,16 @@ scissors.addEventListener('click', e => {
         instructions.textContent = result;
 
         if(result.charAt(4) === 'L') {
-            score.textContent = +score.textContent - 1;
             losses++;
         } else if(result.charAt(4) === 'W') {
             score.textContent = +score.textContent + 1;
             wins++;
         } else {
             ties++;
+        }
+
+        if(wins === 5 || losses === 5) {
+            endButton.dispatchEvent(new Event('click'));
         }
     }
 
