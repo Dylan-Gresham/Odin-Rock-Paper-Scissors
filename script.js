@@ -23,6 +23,9 @@ roundButton.addEventListener('click', e => {
         score.textContent = '0';
         currentScore = 0;
         totalRounds = 0;
+        wins = 0;
+        losses = 0;
+        ties = 0;
     }
 
     midRound = true;
@@ -70,6 +73,9 @@ resetButton.addEventListener('click', e => {
     totalRounds = 0;
     instructions.style.color = '#121212';
     instructions.textContent = 'Click Your Choice For This Round';
+    wins = 0;
+    losses = 0;
+    ties = 0;
 
     e.stopPropagation();
 });
