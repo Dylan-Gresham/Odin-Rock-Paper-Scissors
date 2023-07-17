@@ -1,22 +1,144 @@
 const roundButton = document.querySelector('.new-round');
+const endButton = document.querySelector('.new-round.end');
 const resetButton = document.querySelector('.new-round.reset');
 const score = document.querySelector('.score');
+const instructions = document.querySelector('p');
+const rock = document.querySelector('.rock');
+const paper = document.querySelector('.paper');
+const scissors = document.querySelector('.scissors');
 
 let totalRounds = 0;
 let currentScore = 0;
+let playerChoice;
+let computerChoice;
+let midRound = false;
+let midGame = false;
+let wins = 0;
+let losses = 0;
+let ties = 0;
+
 roundButton.addEventListener('click', e => {
+    if(!midGame) {
+        midGame = true;
+        score.textContent = '0';
+        currentScore = 0;
+        totalRounds = 0;
+    }
+
+    midRound = true;
     if(totalRounds === 0) {
         roundButton.textContent = 'New Round';
+    }
+
+    instructions.textContent = 'Click Your Choice For This Round';
+    instructions.style.color = '#FFFFFF';
+    computerChoice = getComputerChoice();
+
+    e.stopPropagation();
+});
+
+endButton.addEventListener('click', e => {
+    if(!midGame) {
+        return;
+    } else {
+        midRound = false;
+        midGame = false;
+
+        let decision;
+        if(wins > losses) {
+            decision = 'You Won!';
+        } else if(wins < losses) {
+            decision = 'You Lost!';
+        } else {
+            decision = 'It\'s a Tie!';
+        }
+        roundButton.textContent = 'New Game';
+    
+        instructions.textContent = `${decision} Wins: ${wins} Losses: ${losses} Ties: ${ties}`;
+        instructions.style.color = '#FFFFFF';
     }
 
     e.stopPropagation();
 });
 
 resetButton.addEventListener('click', e => {
+    midRound = false;
+    midGame = false;
     score.textContent = '0';
     currentScore = 0;
     roundButton.textContent = 'Start Game';
     totalRounds = 0;
+    instructions.style.color = '#121212';
+    instructions.textContent = 'Click Your Choice For This Round';
+
+    e.stopPropagation();
+});
+
+rock.addEventListener('click', e => {
+    if(!midRound) {
+        return;
+    } else {
+        midRound = false;
+        playerChoice = 'Rock';
+        let result = playRound(playerChoice, computerChoice);
+        instructions.textContent = result;
+
+        if(result.charAt(4) === 'L') {
+            score.textContent = +score.textContent - 1;
+            losses++;
+        } else if(result.charAt(4) === 'W') {
+            score.textContent = +score.textContent + 1;
+            wins++;
+        } else {
+            ties++;
+        }
+    }
+
+    e.stopPropagation();
+});
+
+paper.addEventListener('click', e => {
+    if(!midRound) {
+        return;
+    } else {
+        midRound = false;
+        playerChoice = 'Paper';
+        let result = playRound(playerChoice, computerChoice);
+        instructions.textContent = result;
+
+        if(result.charAt(4) === 'L') {
+            score.textContent = +score.textContent - 1;
+            losses++;
+        } else if(result.charAt(4) === 'W') {
+            score.textContent = +score.textContent + 1;
+            wins++;
+        } else {
+            ties++;
+        }
+    }
+
+    e.stopPropagation();
+});
+
+scissors.addEventListener('click', e => {
+    if(!midRound) {
+        return;
+    } else {
+        midRound = false;
+        playerChoice = 'Scissors';
+        let result = playRound(playerChoice, computerChoice);
+        instructions.textContent = result;
+
+        if(result.charAt(4) === 'L') {
+            score.textContent = +score.textContent - 1;
+            losses++;
+        } else if(result.charAt(4) === 'W') {
+            score.textContent = +score.textContent + 1;
+            wins++;
+        } else {
+            ties++;
+        }
+    }
 
     e.stopPropagation();
 });
